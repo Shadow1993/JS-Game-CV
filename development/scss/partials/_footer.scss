@@ -1,0 +1,11 @@
+.footer {
+    clear: both;
+    text-align: center;
+
+    @include breakpoint(tablet) {
+
+    }
+    @include breakpoint(phone) {
+
+    }
+}
