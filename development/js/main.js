@@ -15,6 +15,7 @@ $(document).ready(function() {
     });
 
     var $zone = $('.zone'),
+        zoneState = false,
         zWidth = $zone.innerWidth(),
         cScaleAmount = 3500,
         cScale = $zone.innerWidth() / cScaleAmount,
@@ -38,8 +39,20 @@ $(document).ready(function() {
 
     function zoneShow() {
         $zone.removeClass('hidden');
+        zoneState = true;
         setTimeout(function() {
             $zone.fadeIn();
+        }, 500);
+        setTimeout(function() {
+            charShow();
+        }, 1000);
+    }
+
+    function zoneHide() {
+        $zone.fadeOut();
+        zoneState = false;
+        setTimeout(function() {
+            $zone.addClass('hidden');
         }, 500);
         setTimeout(function() {
             charShow();
@@ -56,9 +69,6 @@ $(document).ready(function() {
 
         $char.animateSprite('play', 'walkRight');
         console.log(event);
-        // $char.offset().left = 0;
-        // var x = event.pageX - (($char.width() * cScale) / 20) - $char.width() / 1.5 - $char.offset().left;
-        // var y = event.pageY - (($char.height() * cScale) / 20) - $char.height() / 2 - $char.offset().top;
         var x = event.clientX - $zone[0].getBoundingClientRect().left - $char.width() / 2;
         console.log(x);
         var y = event.clientY - $zone[0].getBoundingClientRect().top - $char.height() / 2;
@@ -91,5 +101,12 @@ $(document).ready(function() {
         }
     });
 
-    zoneShow();
+    $('#navBtn1').on('click', function() {
+        if (zoneState) {
+            zoneHide();
+        } else if (!zoneState) {
+            zoneShow();
+        }
+    });
+
 });

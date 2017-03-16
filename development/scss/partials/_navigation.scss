@@ -1,0 +1,12 @@
+nav{
+    width: 75px;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background-color: $color-nav;
+    padding: 15px 30px;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid $color-preloader;
+}
