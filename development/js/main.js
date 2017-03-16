@@ -73,6 +73,9 @@ $(document).ready(function() {
             'transform': 'translate(' + x + 'px, ' + y + 'px) scale(' + cScale + ')'
         });
         animationCancel = setTimeout(funcAnimationCancel, 2100);
+        if (event.target.className === 'testBox') {
+            window.alert('Nice! You found me!');
+        }
     });
 
     $char.animateSprite({

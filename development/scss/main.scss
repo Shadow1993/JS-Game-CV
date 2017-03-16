@@ -26,6 +26,7 @@ html, body{
 }
 .character{
     display:none;
+    position: absolute;
     transition: transform 2s ease;
     width: 128px;
     height: 128px;
@@ -47,4 +48,12 @@ html, body{
 }
 main{
     padding: 0 5%;
+}
+.testBox{
+    width:5%;
+    padding-bottom: 75% * 0.075;
+    background-color: rgba(255, 255, 150, 0.5);
+    position: absolute;
+    top: 31%;
+    left: 44%;
 }
