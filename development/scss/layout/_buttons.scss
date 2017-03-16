@@ -3,17 +3,17 @@
    font-weight: 700;
    line-height: 40px;
    padding: 13px 20px;
-   color: $white;
+   color: $color-white;
    text-transform: uppercase;
    white-space: nowrap;
-   background: $black;
+   background: $color-black;
    cursor: pointer;
    letter-spacing: 1px;
    outline: none;
    @include transition(all $mediumDuration ease-out);
-   border-bottom: 4px solid $black;
+   border-bottom: 4px solid $color-black;
 
    &:hover {
-       background-color: $gray;
+       background-color: $color-gray;
    }
 }

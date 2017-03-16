@@ -1,0 +1,43 @@
+Curriculum Vitae
+
+Ime:	Gojko
+Prezime:	Dikic
+Datum rodenja: 03. 04. 1993.
+Adresa: 	21000 Novi Sad, Nadežde Petrovic 3
+Telefon:	021/6313848
+Mobilni Telefon: 	064/3301643
+E-mail: 	gojkodikic@yahoo.com
+
+Obrazovanje                                                                                  Od/do                                                                                     
+Fakultet tehnickih nauka Univerzitet u Novom Sadu                         					2012-
+Departman: Racunarstvo i automatika
+Srednja mašinska škola Novi Sad                                                             2008-2012
+Smer: Tehnicar za kompjutersko upravljanje
+Osnovna škola „Svetozar Markovic  Toza“                                              		2000-2008
+
+Radno iskustvo
+Hologram d.o.o, pomocni radnik za ugradnju                                   				2013-2014
+protivpožarnog, protivprovalnog sistema i video nadzora                                             
+Servisiranje racunara (dijagnostika kvara, instalacija                         				2012-2016
+operativnog sistema-Windows i Linux, instalacija programa
+na Windows)
+
+Poznavanje stranih jezika
+Engleski  (pisanje-odlicno, citanje-odlicno, govor-odlican)
+
+Rad na racunaru
+Odlicno poznavanje rada na racunaru - MS Office: Word, Excel Worksheet,
+Power Point, Access; Internet explorer; Outlook Express, 
+Operativni sistemi: Windows 2000/XP/Vista/7/8/10, Linux (Osnovno)
+
+Sertifikat ECDL CORE – škola kompjutera Smart School      
+Sertifikat Front-End Developer  – škola kompjutera Smart School
+						(HTML, CSS, JavaScript, jQuerry)      
+Sertifikat PHP i MySQL – škola kompjutera Smart School
+
+Licne osobine: Odgovornost, pouzdanost, preciznost, komunikativnost, 
+samopouzdanje, inicijativa i tolerancija kao i volja, energija, sposobnost
+i želja da se nauci posao
+
+Društvene sposobnosti
+Veoma dobra meduljudska komunikacija, sposobnost timskog rada. 

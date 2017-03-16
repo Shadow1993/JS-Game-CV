@@ -40,15 +40,21 @@
         <script>
             !window.jQuery && document.write('<script src=\'./dependencies/jquery-1.12.4.min.js\'><\/script>')
         </script>
+        <script src='./dependencies/jquery.animateSprite.min.js'></script>
         <!-- jQuery:End -->
         
     </head>
     <body>
+        <div id='preloader'>
+            <i class='fa fa-cog fa-spin' aria-hidden='true'></i>
+        </div>
         <header>
-            <i class="fa fa-address-book" aria-hidden="true"></i>
+
         </header>
         <main>
-
+            <div class='zone hidden'>
+                <div class='character hidden'></div>
+            </div>
         </main>
         <footer>
 
