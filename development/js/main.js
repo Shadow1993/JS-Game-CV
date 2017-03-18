@@ -11,7 +11,6 @@ $(document).ready(function() {
                 $preloader.addClass('hidden');
             });
         }());
-
     });
 
     var $zone = $('.zone'),
@@ -20,7 +19,9 @@ $(document).ready(function() {
         cScaleAmount = 3500,
         cScale = $zone.innerWidth() / cScaleAmount,
         $char = $('.character'),
-        animationCancel = '';
+        animationCancel = '',
+        $info = $('#information'),
+        infoState = false;
 
     function charShow() {
         cScale = $zone.innerWidth() / cScaleAmount;
@@ -59,8 +60,41 @@ $(document).ready(function() {
         }, 1000);
     }
 
+    function infoShow() {
+        $info.removeClass('hidden');
+        infoState = true;
+        setTimeout(function() {
+            $info.fadeIn();
+        }, 500);
+    }
+
+    function infoHide() {
+        $info.fadeOut();
+        infoState = false;
+        setTimeout(function() {
+            $info.addClass('hidden');
+        }, 500);
+    }
+
+    function viewPortResponsive() {
+        var viewPortW = $(window).width(),
+            viewPortH = $(window).height();
+        if (viewPortH < 480) {
+            $('#navBtn1').html('<i class="fa fa-eye" aria-hidden="true"></i>');
+            $('#navBtn2').html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>');
+        } else if (670 < viewPortW && 630 < viewPortH) {
+            $('#navBtn1').html('Scavenge Info');
+            $('#navBtn2').html('Scavenged Info');
+        } else if (640 < viewPortW < 670 && 480 < viewPortH < 630) {
+            $('#navBtn1').html('<i class="fa fa-eye" aria-hidden="true"></i></i> Find');
+            $('#navBtn2').html('<i class="fa fa-user-circle-o" aria-hidden="true"></i> Info');
+        }
+    }
+
+    viewPortResponsive();
     $(window).on('resize', function() {
         charShow();
+        viewPortResponsive();
     });
 
     $zone.click(function(event) {
@@ -106,6 +140,13 @@ $(document).ready(function() {
             zoneHide();
         } else if (!zoneState) {
             zoneShow();
+        }
+    });
+    $('#navBtn2').on('click', function() {
+        if (infoState) {
+            infoHide();
+        } else if (!infoState) {
+            infoShow();
         }
     });
 
