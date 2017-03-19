@@ -13,81 +13,99 @@ $(document).ready(function() {
         }());
     });
 
-    var $zone = $('.zone'),
-        zoneState = false,
-        zWidth = $zone.innerWidth(),
-        cScaleAmount = 3500,
-        cScale = $zone.innerWidth() / cScaleAmount,
-        $char = $('.character'),
-        animationCancel = '',
-        $info = $('#information'),
-        infoState = false;
+    var containers = {
+            $notify: $('#notification'),
+            $intro: $('#introduction'),
+            $info: $('#information'),
+            $zone: $('#zone'),
+            $contact: $('#contact')
+        },
+        states = {
+            notify: false,
+            intro: true,
+            zone: false,
+            info: false,
+            contact: false
+        },
+        gameSize = {
+            width: containers.$zone.innerWidth(),
+            scale: 3500
+        },
+        game = {
+            $char: $('#character'),
+            charScale: gameSize.width / gameSize.scale
+        },
+        navControl = {
+            $nav1: $('#navBtn1'),
+            $nav2: $('#navBtn2'),
+            $nav3: $('#navBtn3'),
+            $nav4: $('#navBtn4')
+        },
+        animationCancel = '';
 
     function charShow() {
-        cScale = $zone.innerWidth() / cScaleAmount;
-        $char.css({
-            'transform': 'translate(0, 0) scale(' + cScale + ')'
+        gameSize.width = containers.$zone.innerWidth();
+        game.charScale = gameSize.width / gameSize.scale;
+        game.$char.css({
+            'transform': 'translate(0, 0) scale(' + game.charScale + ')'
         });
-        $char.removeClass('hidden');
+        game.$char.removeClass('hidden');
         setTimeout(function() {
-            $char.fadeIn();
+            game.$char.fadeIn();
         }, 500);
     }
 
     function funcAnimationCancel() {
-        $char.animateSprite('stop');
+        game.$char.animateSprite('stop');
+    }
+
+    function containersHide() {
+        for (var i in containers) {
+            containers[i].fadeOut();
+        }
+        for (var j in states) {
+            states[j] = false;
+        }
     }
 
     function zoneShow() {
-        $zone.removeClass('hidden');
-        zoneState = true;
-        setTimeout(function() {
-            $zone.fadeIn();
-        }, 500);
-        setTimeout(function() {
-            charShow();
-        }, 1000);
-    }
-
-    function zoneHide() {
-        $zone.fadeOut();
-        zoneState = false;
-        setTimeout(function() {
-            $zone.addClass('hidden');
-        }, 500);
-        setTimeout(function() {
-            charShow();
-        }, 1000);
+        containersHide();
+        states.zone = true;
+        containers.$zone.fadeIn();
+        charShow();
     }
 
     function infoShow() {
-        $info.removeClass('hidden');
-        infoState = true;
-        setTimeout(function() {
-            $info.fadeIn();
-        }, 500);
+        containersHide();
+        states.info = true;
+        containers.$info.fadeIn();
     }
 
-    function infoHide() {
-        $info.fadeOut();
-        infoState = false;
-        setTimeout(function() {
-            $info.addClass('hidden');
-        }, 500);
+    function introShow() {
+        containersHide();
+        states.intro = true;
+        containers.$intro.fadeIn();
+    }
+
+    function contactShow() {
+        containersHide();
+        states.contact = true;
+        containers.$contact.fadeIn();
     }
 
     function viewPortResponsive() {
         var viewPortW = $(window).width(),
             viewPortH = $(window).height();
-        if (viewPortH < 480) {
-            $('#navBtn1').html('<i class="fa fa-eye" aria-hidden="true"></i>');
-            $('#navBtn2').html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>');
-        } else if (670 < viewPortW && 630 < viewPortH) {
-            $('#navBtn1').html('Scavenge Info');
-            $('#navBtn2').html('Scavenged Info');
-        } else if (640 < viewPortW < 670 && 480 < viewPortH < 630) {
-            $('#navBtn1').html('<i class="fa fa-eye" aria-hidden="true"></i></i> Find');
-            $('#navBtn2').html('<i class="fa fa-user-circle-o" aria-hidden="true"></i> Info');
+        // if (viewPortH < 480) {
+        //     $('#navBtn1').html('<i class="fa fa-eye" aria-hidden="true"></i>');
+        //     $('#navBtn2').html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>');
+        // } else
+        if (670 < viewPortW && 735 < viewPortH) {
+            navControl.$nav2.html('<i class="fa fa-eye" aria-hidden="true"></i></i> Scavenge Info');
+            navControl.$nav3.html('<i class="fa fa-user-circle-o" aria-hidden="true"></i> Scavenged Info');
+        } else if (640 < viewPortW < 670 && viewPortH < 735) {
+            navControl.$nav2.html('<i class="fa fa-eye" aria-hidden="true"></i></i> Find');
+            navControl.$nav3.html('<i class="fa fa-user-circle-o" aria-hidden="true"></i> Info');
         }
     }
 
@@ -97,32 +115,38 @@ $(document).ready(function() {
         viewPortResponsive();
     });
 
-    $zone.click(function(event) {
+    containers.$zone.click(function(event) {
         clearTimeout(animationCancel);
         funcAnimationCancel();
 
-        $char.animateSprite('play', 'walkRight');
+        game.$char.animateSprite('play', 'walkRight');
         console.log(event);
-        var x = event.clientX - $zone[0].getBoundingClientRect().left - $char.width() / 2;
-        console.log(x);
-        var y = event.clientY - $zone[0].getBoundingClientRect().top - $char.height() / 2;
+        var x = event.clientX - containers.$zone[0].getBoundingClientRect().left - game.$char.width() / 2;
+        var y = event.clientY - containers.$zone[0].getBoundingClientRect().top - game.$char.height() / 2;
 
         if (x < 0) {
             x = 0;
-        } else if (x > zWidth) {
-            x = zWidth;
+        } else if (x > gameSize.width) {
+            x = gameSize.width;
         }
 
-        $char.css({
-            'transform': 'translate(' + x + 'px, ' + y + 'px) scale(' + cScale + ')'
+        game.$char.css({
+            'transform': 'translate(' + x + 'px, ' + y + 'px) scale(' + game.charScale + ')'
         });
         animationCancel = setTimeout(funcAnimationCancel, 2100);
-        if (event.target.className === 'testBox') {
-            window.alert('Nice! You found me!');
+        if (event.target.className === 'info') {
+            setTimeout(function() {
+                containers.$notify.html('Nice! You found information!').fadeIn();
+                setTimeout(function() {
+                    containers.$notify.fadeOut();
+                }, 3000);
+            }, 2000);
+            $('#' + event.target.id).fadeOut(1);
+            $('#information span.hidden').first().removeClass('hidden');
         }
     });
 
-    $char.animateSprite({
+    game.$char.animateSprite({
         fps: 5,
         loop: true,
         animations: {
@@ -135,18 +159,32 @@ $(document).ready(function() {
         }
     });
 
-    $('#navBtn1').on('click', function() {
-        if (zoneState) {
-            zoneHide();
-        } else if (!zoneState) {
+    navControl.$nav1.on('click', function() {
+        if (states.intro) {
+            containersHide();
+        } else if (!states.intro) {
+            introShow();
+        }
+    });
+    navControl.$nav2.on('click', function() {
+        if (states.zone) {
+            containersHide();
+        } else if (!states.zone) {
             zoneShow();
         }
     });
-    $('#navBtn2').on('click', function() {
-        if (infoState) {
-            infoHide();
-        } else if (!infoState) {
+    navControl.$nav3.on('click', function() {
+        if (states.info) {
+            containersHide();
+        } else if (!states.info) {
             infoShow();
+        }
+    });
+    navControl.$nav4.on('click', function() {
+        if (states.contact) {
+            containersHide();
+        } else if (!states.contact) {
+            contactShow();
         }
     });
 

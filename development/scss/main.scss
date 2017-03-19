@@ -17,6 +17,7 @@
 
 /*-~- partials -~-*/
 @import "partials/preloader";
+@import "partials/info-parts";
 @import "partials/header";
 @import "partials/navigation";
 @import "partials/footer";
@@ -24,8 +25,23 @@
 /*-~- styles -~-*/
 html, body{
     background-color: $color-mainBackground;
+
+    //TODO - Support other browsers by using a js plugin instead
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
 }
-.character{
+#character{
     display:none;
     position: absolute;
     transition: transform 2s ease;
@@ -34,7 +50,20 @@ html, body{
     background-image: url('./../images/Green_team.png');
     background-position: 0px 128px;
 }
-.zone{
+#introduction{
+    width:50%;
+    background-color: $color-background1;
+    color: $color-preloader;
+    border: $border-common;
+    padding: 10px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 0;
+}
+#zone{
     display:none;
     width:100%;
     height: 0;
@@ -45,21 +74,14 @@ html, body{
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+    border: $border-common;
 }
 main{
     position: absolute;
     right: 0;
     top: 0;
-    left: 56px;
+    left: 54px;
     bottom: 0;
-}
-.testBox{
-    width:5%;
-    padding-bottom: 75% * 0.075;
-    background-color: rgba(255, 255, 150, 0.5);
-    position: absolute;
-    top: 31%;
-    left: 44%;
 }
 #notification{
     display: none;
@@ -77,7 +99,8 @@ main{
     color: $color-preloader;
     padding: 10px 20px;
     text-align: center;
-    border: 1px solid $color-preloader;
+    border: $border-common;
+    border-radius: 0 15px 0 15px;
 }
 #information{
     display: none;
@@ -86,13 +109,15 @@ main{
     margin: 5vh auto;
     right: 0;
     top: 0;
-    left: 56px;
-    width:80%;
+    left: 0;
+    width:90%;
     bottom: 0;
     padding: 10px 20px;
     background-color: $color-background1;
     color: $color-preloader;
-    border: 1px solid $color-preloader;
+    border: $border-common;
+    border-radius: 0 25px 0 25px;
+    overflow: auto;
 }
 #notSupported{
     display: none;
@@ -104,6 +129,7 @@ main{
     z-index: 100;
     background-color: $color-background1;
     color: $color-preloader;
+    border: $border-common;
     padding: 10% 20%;
     p{
         margin-top: 5px;
@@ -112,7 +138,7 @@ main{
         font-size: 3em;
         line-height: 101%;
     }
-    @media screen and (max-width:640px) and (max-height:480px) {
+    @media screen and (max-width:640px), screen and (max-height:480px) {
         display: block;
     }
 }

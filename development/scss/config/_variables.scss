@@ -13,6 +13,8 @@ $color-mainBackground: $color-black;
 
 $color-background1: #020;
 
+$color-transparent1: rgba(50, 250, 150, 0.5);
+
 //Buttons
 $color-button1-1: #2f2;
 $color-button1-2: #040;
@@ -21,3 +23,6 @@ $color-button1-2: #040;
 $fastDuration: .1s;
 $mediumDuration: .3s;
 $slowDuration: .6s;
+
+//Borders
+$border-common: 1px solid $color-preloader;

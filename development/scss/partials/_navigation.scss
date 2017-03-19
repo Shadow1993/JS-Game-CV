@@ -3,8 +3,8 @@ nav{
     z-index: 99;
     left: 0;
     background-color: $color-background1;
-    padding: 5px 50px;
-    border: 1px solid $color-preloader;
+    padding: 5px 10px;
+    border: $border-common;
     transform: rotate(-90deg) translate(-108.5%, -100%);
     transform-origin: 0 -100%;
 }
