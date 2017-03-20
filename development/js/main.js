@@ -120,7 +120,7 @@ $(document).ready(function() {
         funcAnimationCancel();
 
         game.$char.animateSprite('play', 'walkRight');
-        console.log(event);
+        // console.log(event);
         var x = event.clientX - containers.$zone[0].getBoundingClientRect().left - game.$char.width() / 2;
         var y = event.clientY - containers.$zone[0].getBoundingClientRect().top - game.$char.height() / 2;
 
@@ -186,6 +186,39 @@ $(document).ready(function() {
         } else if (!states.contact) {
             contactShow();
         }
+    });
+
+    $('#submit').on('click', function() {
+        var iName = $('#name').val(),
+            iEmail = $('#email').val(),
+            iMsg = $('#msg').val();
+        // console.log('name: ' + iName);
+        // console.log('email: ' + iEmail);
+        // console.log('msg: ' + iMsg);
+        $.ajax({
+            url: '/contact',
+            type: 'post',
+            data: {
+                name: iName,
+                email: iEmail,
+                msg: iMsg
+            },
+            complete: function(xhr, status) {
+                var msg =
+                'Your message has been recieved <em><b>' + xhr.responseJSON.name + '</b></em>! Enjoy your day :)';
+                // console.log(status);
+                console.log(xhr);
+                if (status === 'success') {
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#msg').val('');
+                    containers.$notify.html(msg).fadeIn();
+                    setTimeout(function() {
+                        containers.$notify.fadeOut();
+                    }, 3000);
+                }
+            }
+        });
     });
 
 });

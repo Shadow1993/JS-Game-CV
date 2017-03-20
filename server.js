@@ -10,10 +10,20 @@ var PORT = 8080,    //Server Port
 /*-~- Server Setup -~-*/
 app.use(express.static(__dirname + PUBLIC));
 app.use(cors());
+app.use(bodyParser.urlencoded());
  
 app.get('/products/:id', function(req, res, next) {
     res.json({
         msg: 'This is CORS-enabled for all origins!'
+    });
+});
+
+app.post('/contact', function(req, res) {
+    console.log(req.body);
+    res.type('json');
+    res.json(200, {
+        status: 'success',
+        name: req.body.name
     });
 });
 
