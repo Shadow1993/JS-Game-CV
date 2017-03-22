@@ -33,7 +33,8 @@ $(document).ready(function() {
         },
         game = {
             $char: $('#character'),
-            charScale: gameSize.width / gameSize.scale
+            charScale: gameSize.width / gameSize.scale,
+            x: 5
         },
         navControl = {
             $nav1: $('#navBtn1'),
@@ -119,10 +120,17 @@ $(document).ready(function() {
         clearTimeout(animationCancel);
         funcAnimationCancel();
 
-        game.$char.animateSprite('play', 'walkRight');
+        if (event.clientX < game.x) {
+            game.$char.animateSprite('play', 'walkLeft');
+        } else {
+            game.$char.animateSprite('play', 'walkRight');
+        }
         // console.log(event);
+        // console.log(event.clientX);
+        // console.log(game.x);
         var x = event.clientX - containers.$zone[0].getBoundingClientRect().left - game.$char.width() / 2;
         var y = event.clientY - containers.$zone[0].getBoundingClientRect().top - game.$char.height() / 2;
+        game.x = event.clientX;
 
         if (x < 0) {
             x = 0;
