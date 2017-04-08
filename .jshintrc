@@ -2,14 +2,12 @@
     "node"     : true,
     "bitwise"  : true,
     "browser"  : true,
-    "globals": {
-        "$": false
-    },
     "undef"    : true,
     "eqeqeq"   : true,
     "noarg"    : true,
     "mocha"    : true,
     "unused"   : true,
     "asi"      : true,
-    "esnext"   : true
+    "esnext"   : true,
+	"predef"   : ["angular", "$"]
 }

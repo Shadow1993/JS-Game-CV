@@ -169,28 +169,28 @@ $(document).ready(function() {
 
     navControl.$nav1.on('click', function() {
         if (states.intro) {
-            containersHide();
+            // containersHide();
         } else if (!states.intro) {
             introShow();
         }
     });
     navControl.$nav2.on('click', function() {
         if (states.zone) {
-            containersHide();
+            // containersHide();
         } else if (!states.zone) {
             zoneShow();
         }
     });
     navControl.$nav3.on('click', function() {
         if (states.info) {
-            containersHide();
+            // containersHide();
         } else if (!states.info) {
             infoShow();
         }
     });
     navControl.$nav4.on('click', function() {
         if (states.contact) {
-            containersHide();
+            // containersHide();
         } else if (!states.contact) {
             contactShow();
         }
@@ -200,9 +200,7 @@ $(document).ready(function() {
         var iName = $('#name').val(),
             iEmail = $('#email').val(),
             iMsg = $('#msg').val();
-        // console.log('name: ' + iName);
-        // console.log('email: ' + iEmail);
-        // console.log('msg: ' + iMsg);
+
         $.ajax({
             url: '/contact',
             type: 'post',
