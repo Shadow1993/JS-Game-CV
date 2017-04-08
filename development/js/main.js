@@ -101,10 +101,10 @@ $(document).ready(function() {
         //     $('#navBtn1').html('<i class="fa fa-eye" aria-hidden="true"></i>');
         //     $('#navBtn2').html('<i class="fa fa-user-circle-o" aria-hidden="true"></i>');
         // } else
-        if (670 < viewPortW && 735 < viewPortH) {
+        if (680 < viewPortW && 735 < viewPortH) {
             navControl.$nav2.html('<i class="fa fa-eye" aria-hidden="true"></i></i> Scavenge Info');
             navControl.$nav3.html('<i class="fa fa-user-circle-o" aria-hidden="true"></i> Scavenged Info');
-        } else if (640 < viewPortW < 670 && viewPortH < 735) {
+        } else if (640 < viewPortW < 680 && viewPortH < 735) {
             navControl.$nav2.html('<i class="fa fa-eye" aria-hidden="true"></i></i> Find');
             navControl.$nav3.html('<i class="fa fa-user-circle-o" aria-hidden="true"></i> Info');
         }
@@ -228,5 +228,8 @@ $(document).ready(function() {
             }
         });
     });
-
+    $('.cheat').on('click', function() {
+        $('.hidden').toggleClass('hidden');
+        $(this).addClass('hidden');
+    });
 });
